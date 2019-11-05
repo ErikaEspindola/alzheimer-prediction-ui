@@ -1,1 +1,44 @@
-/* You can add global styles to this file, and also import other style files */
+@import 'assets/scss/styles';
+@import 'assets/scss/color-palette';
+@import 'assets/scss/material-icon';
+@import 'assets/scss/bootstrap-grid';
+
+.fx {
+    display: flex;
+}
+
+.jc-c {
+    justify-content: center;
+}
+
+.jc-sb {
+    justify-content: space-between;
+}
+
+.jc-se {
+    justify-content: space-evenly;
+}
+
+.ai-c {
+    align-items: center;
+}
+
+.width-100 {
+    width: 100%;
+}
+
+.danger {
+    color: #f44336;
+}
+
+.c-p {
+    cursor: pointer;
+}
+
+.pos-rel {
+    position: relative;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
