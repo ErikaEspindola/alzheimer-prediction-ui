@@ -1,9 +1,10 @@
 {
   "name": "alzheimer-prediction",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "node server.js",
+    "postinstall": "ng build",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -22,6 +23,7 @@
     "@angular/platform-browser-dynamic": "~8.2.13",
     "@angular/router": "~8.2.13",
     "core-js": "^2.5.4",
+    "express": "^4.17.1",
     "ngx-dropzone": "^1.1.5",
     "ngx-dropzone-wrapper": "^7.2.1",
     "rxjs": "~6.5.3",
