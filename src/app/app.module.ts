@@ -1,28 +1,35 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; // this is needed!
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { RouterModule } from '@angular/router';
+import { AppRoutingModule } from './app.routing';
+import { ComponentsModule } from './components/components.module';
+import { ExamplesModule } from './examples/examples.module';
 
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { PaginaInicialModule } from './pagina-inicial/pagina-inicial.module';
-import { UploadComponent } from './arquivos/upload/upload.component';
+import { NavbarComponent } from './shared/navbar/navbar.component';
+import { UploadModule } from './components/upload/upload.module';
+import { HttpClientModule } from '@angular/common/http';
 import { NgxDropzoneModule } from 'ngx-dropzone';
-import { MatButtonModule } from '@angular/material/button';
-import { HttpClientModule } from '@angular/common/http'; 
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    UploadComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    PaginaInicialModule,
-    NgxDropzoneModule,
-    MatButtonModule,
-    HttpClientModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        NavbarComponent
+    ],
+    imports: [
+        BrowserAnimationsModule,
+        NgbModule.forRoot(),
+        FormsModule,
+        RouterModule,
+        AppRoutingModule,
+        ComponentsModule,
+        ExamplesModule,
+        NgxDropzoneModule,
+        HttpClientModule
+    ],
+    providers: [],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }
