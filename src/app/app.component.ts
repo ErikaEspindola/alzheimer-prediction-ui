@@ -1,43 +1,104 @@
-import { Component, OnInit, Inject, Renderer, ElementRef, ViewChild } from '@angular/core';
-import { Router, NavigationEnd } from '@angular/router';
-import { Subscription } from 'rxjs/Subscription';
-import 'rxjs/add/operator/filter';
-import { DOCUMENT } from '@angular/platform-browser';
-import { LocationStrategy, PlatformLocation, Location } from '@angular/common';
-import { NavbarComponent } from './shared/navbar/navbar.component';
+import { Component, HostListener } from '@angular/core';
+import { AppService } from './app.service';
 
 @Component({
-    selector: 'app-root',
-    templateUrl: './app.component.html',
-    styleUrls: ['./app.component.scss']
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
-    private _router: Subscription;
-    @ViewChild(NavbarComponent) navbar: NavbarComponent;
+export class AppComponent {
+  title = 'DANet';
+  changeNavBarColor = false;
+  uploadFiles: File[] = [];
+  showDownloadBtn: boolean = false;
+  images: Array<string> = [];
 
-    constructor( private renderer : Renderer, private router: Router, @Inject(DOCUMENT,) private document: any, private element : ElementRef, public location: Location) {}
-    ngOnInit() {
-        var navbar : HTMLElement = this.element.nativeElement.children[0].children[0];
-        this._router = this.router.events.filter(event => event instanceof NavigationEnd).subscribe((event: NavigationEnd) => {
-            if (window.outerWidth > 991) {
-                window.document.children[0].scrollTop = 0;
-            }else{
-                window.document.activeElement.scrollTop = 0;
-            }
-            this.navbar.sidebarClose();
+  scrollToNextDiv(el: HTMLElement) {
+    el.scrollIntoView();
+  }
 
-            this.renderer.listenGlobal('window', 'scroll', (event) => {
-                const number = window.scrollY;
-                var _location = this.location.path();
-                _location = _location.split('/')[2];
+  @HostListener('window:scroll', ['$event']) // for window scroll events
+  onScroll(event) {
+    this.changeNavBarColor = event.target.scrollingElement.scrollTop > 550;
+  }
 
-                if (number > 150 || window.pageYOffset > 150) {
-                    navbar.classList.remove('navbar-transparent');
-                } else if (_location !== 'login' && this.location.path() !== '/nucleoicons') {
-                    // remove logic
-                    navbar.classList.add('navbar-transparent');
-                }
-            });
+
+  constructor(private appService: AppService) { }
+
+  ngOnInit() { }
+
+  onFilesAdded(files: any) {
+
+    console.log(files);
+    this.uploadFiles = files.addedFiles;
+    console.log(this.uploadFiles)
+  }
+
+  onRemove(event) {
+
+    this.uploadFiles.splice(this.uploadFiles.indexOf(event), 1);
+  }
+
+  upload(array, i) {
+
+    if (array.length > 0) {
+      let formData = new FormData();
+
+      formData.append('file', array[i], array[i].name);
+
+      this.appService.uploadFile(formData)
+        .subscribe((images: Array<string>) => {
+          this.showDownloadBtn = true;
+          this.images = images;
         });
     }
+  }
+
+  private _convertBase64ToBlobData(base64Data: string, contentType: string = 'image/nii', sliceSize = 512) {
+
+    const byteCharacters = atob(base64Data);
+    const byteArrays = [];
+
+    for (let offset = 0; offset < byteCharacters.length; offset += sliceSize) {
+      const slice = byteCharacters.slice(offset, offset + sliceSize);
+
+      const byteNumbers = new Array(slice.length);
+      for (let i = 0; i < slice.length; i++) {
+        byteNumbers[i] = slice.charCodeAt(i);
+      }
+
+      const byteArray = new Uint8Array(byteNumbers);
+
+      byteArrays.push(byteArray);
+    }
+
+    const blob = new Blob(byteArrays, { type: contentType });
+    return blob;
+  }
+
+  downloadImages() {
+
+    this.images.forEach((img, i) => {
+      let blobData = this._convertBase64ToBlobData(img);
+      this._download(blobData, i);
+    });
+  }
+
+  private _download(blobData: Blob, i) {
+
+    let filename = i == 0 ? 'cerebro.nii' : 'mascara.nii';
+
+    if (window.navigator && window.navigator.msSaveOrOpenBlob) {
+      window.navigator.msSaveOrOpenBlob(blobData, filename);
+    } else {
+      const blob = new Blob([blobData], { type: 'image/nii' });
+      const url = window.URL.createObjectURL(blob);
+      window.open(url);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = filename;
+      link.click();
+    }
+  }
 }
+

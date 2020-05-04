@@ -1,2 +1,99 @@
-<app-navbar></app-navbar>
-<router-outlet></router-outlet>
+<mat-toolbar [ngClass]="changeNavBarColor? 'mat-toolbar-color' : 'mat-toolbar-transparent'">
+    <mat-toolbar-row>
+        <div>
+            <img src="../../assets/img/LogoMakr_2zUTvZ.png">
+            <a href="#">DANet</a>
+        </div>
+
+        <span class="example-spacer"></span>
+
+        <a mat-button href="#">Introdução</a>
+        <a mat-button href="#">Upload</a>
+        <a mat-button href="#">Resultado</a>
+        <a mat-button href="#">Contatos</a>
+    </mat-toolbar-row>
+</mat-toolbar>
+
+<section class="fx jc-c ai-fe" (scroll)="onScroll($event)">
+    <div class="row fx jc-c" (click)="scrollToNextDiv(fluxo)">
+        <img class="arrow" src="../../assets/img/arrowdown.png" alt="">
+    </div>
+</section>
+
+<div class="intro-text">
+    <h5>Classificação da Doença de Alzheimer</h5>
+    <div>
+        <p>A Doença de Alzheimer é a forma mais comum de demência, e a população</p>
+        <p class="mg-top">idosa é a mais afetada.</p>
+    </div>
+    <div>
+        <p>Muitas pessoas recebem o diagnóstico errado, ou demoram</p>
+        <p class="mg-top">muito para serem diagnosticadas.</p>
+    </div>
+    <div>
+        <p>Com o diagnóstico precoce, o tratamento dessa doença é muito mais eficaz.</p>
+    </div>
+    <div>
+        <p>Por isso, foi criado este site. Ele tem o objetivo de classificar uma imagem de</p>
+        <p class="mg-top">ressonância magnética do cérebro e classificá-la em uma das três classes:</p>
+        <ul>
+            <li>Cognitivamente Normal</li>
+            <li>Comprometimento Cognitivo Leve</li>
+            <li>Doença de Alzheimer</li>
+        </ul>
+    </div>
+    <div>
+        <p>O resultado da classificação será exibido com dados que possuem 63% de acurácia.</p>
+    </div>
+</div>
+
+
+<div #fluxo class="fluxo-bg">
+    <div class="container">
+        <h3 class="fx jc-c">Funcionamento do software</h3>
+        <ul>
+            <li>
+                <img src="../assets/img/upload.png" alt="">
+                <span>Envie seu arquivo</span>
+            </li>
+            <li>
+                <img src="../assets/img/clock.png" alt="">
+                <span>Aguarde o processamento</span>
+            </li>
+            <li>
+                <img src="../assets/img/brain.png" alt="">
+                <span>Valor da classificação</span>
+            </li>
+        </ul>
+    </div>
+
+    <div class="row fx jc-c" (click)="scrollToNextDiv(upload)">
+        <img class="arrow" src="../../assets/img/blackarrowdown.png" alt="">
+    </div>
+</div>
+
+<div #upload class="upload">
+
+    <h3 class="fx jc-c">Envie sua imagem do cérebro!</h3>
+    <div class="dropzone fx jc-c">
+        <ngx-dropzone class="custom-dropzone fx jc-c" (change)="onFilesAdded($event, 1)" [multiple]="false">
+            <ngx-dropzone-label>
+                <img src="../assets/img/uploadroxo.png">
+                <p>Clique ou arraste o arquivo para fazer upload</p>
+            </ngx-dropzone-label>
+            <ngx-dropzone-preview *ngFor="let f of uploadFiles" [removable]="true" (removed)="onRemove(f)">
+                <ngx-dropzone-label>{{ f.name }}</ngx-dropzone-label>
+            </ngx-dropzone-preview>
+        </ngx-dropzone>
+
+    </div>
+
+    <div class="format">
+        <small>Formato aceito: .nii</small>
+    </div>
+
+    <div class="fx jc-c">
+        <button mat-raised-button color="primary" (click)="upload(uploadFiles, 0)">Enviar</button>
+    </div>
+
+</div>
