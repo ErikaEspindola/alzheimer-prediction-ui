@@ -1,0 +1,27 @@
+<div class="fluxo-bg">
+  <div class="container">
+      <h3 class="fx jc-c">Funcionamento do software</h3>
+      <ul>
+          <li>
+              <img src="../assets/img/upload.png" alt="">
+              <span>Envie seu arquivo</span>
+          </li>
+          <li>
+              <img src="../assets/img/clock.png" alt="">
+              <span>Aguarde o processamento</span>
+          </li>
+          <li>
+              <img src="../assets/img/brain.png" alt="">
+              <span>Valor da classificação</span>
+          </li>
+      </ul>
+  </div>
+
+  <div class="row fx jc-c" (click)="scrollToNextDiv(upload)">
+      <img class="arrow" src="../../assets/img/blackarrowdown.png" alt="">
+  </div>
+</div>
+
+<div id="upload" #upload>
+  <app-upload></app-upload>
+</div>

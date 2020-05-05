@@ -1,0 +1,41 @@
+.fluxo-bg {
+  padding-top: 150px;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #9c3aec9a 100%);
+  .container {
+    height: 420px;
+  }
+  ul {
+    display: flex;
+    margin: 0 auto;
+    align-items: center;
+    height: 150px;
+    padding-left: 0px;
+    justify-content: space-around;
+    position: relative;
+    font-size: 16px;
+    margin-top: 35px;
+    li {
+      text-align: center;
+      flex: 1;
+      display: inline-block;
+      align-items: center;
+      justify-content: center;
+      img {
+        height: 80px;
+        display: block;
+        margin: 0 auto;
+        padding: 15px 0;
+        position: relative;
+      }
+    }
+  }
+  .row:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+    cursor: pointer;
+  }
+}
+
+.arrow {
+  height: 50px;
+  padding: 15px 0;
+}

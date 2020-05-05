@@ -9,10 +9,18 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { NgxDropzoneModule } from 'ngx-dropzone';
+import { ContatoComponent } from './contato/contato.component';
+import { FluxoComponent } from './fluxo/fluxo.component';
+import { UploadComponent } from './upload/upload.component';
+import { ResultadoComponent } from './resultado/resultado.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    ContatoComponent,
+    FluxoComponent,
+    UploadComponent,
+    ResultadoComponent,
   ],
   imports: [
     BrowserModule,

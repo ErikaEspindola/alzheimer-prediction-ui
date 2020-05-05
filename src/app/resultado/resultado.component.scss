@@ -1,0 +1,33 @@
+.resultado {
+  padding-top: 150px;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #9c3aec9a 100%);
+
+  .custom-container {
+    height: 420px;
+    display: flex;
+    flex-direction: column;
+    
+    .fx1 {
+      flex: 1;
+    }
+
+    .fx02 {
+      flex: 0.2;
+    }
+
+    .classe {
+      font-size: xxx-large;
+      text-transform: uppercase;
+    }
+  }
+
+  .row:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+    cursor: pointer;
+  }
+}
+
+.arrow {
+  height: 50px;
+  padding: 15px 0;
+}

@@ -1,0 +1,60 @@
+.upload {
+  padding-top: 100px;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, #9c3aec9a 100%);
+
+  .row:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+    cursor: pointer;
+  }
+
+  .custom-container {
+    height: 470px;
+
+    h3 {
+      padding-top: 50px;
+    }
+
+    button {
+      width: 40%;
+      border-radius: 25px;
+    }
+
+    .format {
+      display: flex;
+      justify-content: flex-end;
+      width: 80%;
+      color: #9b3aec;
+      padding-bottom: 30px;
+    }
+
+    .dropzone {
+      padding-top: 35px;
+      ngx-dropzone {
+        color: #9b3aec;
+        border-color: #9b3aec;
+        padding: 16px;
+        height: auto;
+        width: 60%;
+        border-radius: 25px;
+
+        &.custom-dropzone {
+          background: transparent;
+
+          &.hovered {
+            border-style: solid;
+          }
+        }
+
+        img {
+          height: 60px;
+          padding-bottom: 10px;
+        }
+      }
+    }
+  }
+}
+
+.arrow {
+  height: 50px;
+  padding: 15px 0;
+}
