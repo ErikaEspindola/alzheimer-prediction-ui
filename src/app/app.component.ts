@@ -9,9 +9,13 @@ import { AppService } from './app.service';
 export class AppComponent {
   title = 'DANet';
   changeNavBarColor = false;
-  uploadFiles: File[] = [];
+  
   showDownloadBtn: boolean = false;
   images: Array<string> = [];
+
+  constructor() { }
+
+  ngOnInit() { }
 
   scrollToNextDiv(el: HTMLElement) {
     el.scrollIntoView();
@@ -21,39 +25,7 @@ export class AppComponent {
   onScroll(event) {
     this.changeNavBarColor = event.target.scrollingElement.scrollTop > 550;
   }
-
-
-  constructor(private appService: AppService) { }
-
-  ngOnInit() { }
-
-  onFilesAdded(files: any) {
-
-    console.log(files);
-    this.uploadFiles = files.addedFiles;
-    console.log(this.uploadFiles)
-  }
-
-  onRemove(event) {
-
-    this.uploadFiles.splice(this.uploadFiles.indexOf(event), 1);
-  }
-
-  upload(array, i) {
-
-    if (array.length > 0) {
-      let formData = new FormData();
-
-      formData.append('file', array[i], array[i].name);
-
-      this.appService.uploadFile(formData)
-        .subscribe((images: Array<string>) => {
-          this.showDownloadBtn = true;
-          this.images = images;
-        });
-    }
-  }
-
+  
   private _convertBase64ToBlobData(base64Data: string, contentType: string = 'image/nii', sliceSize = 512) {
 
     const byteCharacters = atob(base64Data);
