@@ -8,6 +8,7 @@ import { AppService } from '../app.service';
 })
 export class UploadComponent implements OnInit {
   uploadFiles: File[] = [];
+  result: string = '';
 
   constructor(private appService: AppService) { }
 
@@ -20,9 +21,7 @@ export class UploadComponent implements OnInit {
 
   onFilesAdded(files: any) {
 
-    console.log(files);
     this.uploadFiles = files.addedFiles;
-    console.log(this.uploadFiles)
   }
 
   onRemove(event) {
@@ -37,10 +36,24 @@ export class UploadComponent implements OnInit {
 
       formData.append('file', array[i], array[i].name);
 
+      let t0 = performance.now()
+
       this.appService.uploadFile(formData)
-        .subscribe((res) => {
+        .subscribe((res: any) => {
+
           console.log(res);
+          if(res.resultado === 0) {
+            this.result = 'Cognitivamente Normal';
+          } else if(res.resultado === 1) {
+            this.result = 'Comprometimento Cognitivo Leve';
+          } else {
+            this.result = 'Doença de Alzheimer';
+          }
+
+          let t1 = performance.now()
+          console.log("Call to doSomething took " + (t1 - t0) + " milliseconds.")
         });
+
     }
   }
 

@@ -7,45 +7,46 @@
 
         <span class="example-spacer"></span>
 
-        <a mat-button href="#fluxo">Introdução</a>
+        <a mat-button href="#intro">Introdução</a>
+        <a mat-button href="#fluxo">Funcionamento</a>
         <a mat-button href="#upload">Upload</a>
         <a mat-button href="#resultado">Resultado</a>
         <a mat-button href="#contato">Contato</a>
     </mat-toolbar-row>
 </mat-toolbar>
 
-<section class="fx jc-c ai-fe" (scroll)="onScroll($event)">
+<section class="secao" (scroll)="onScroll($event)" id="intro">
+    <div class="intro-text">
+        <h2 class="bold">Classificação da Doença de Alzheimer</h2>
+        <div>
+            <p>A Doença de Alzheimer é a forma mais comum de demência, e a população</p>
+            <p class="mg-top">idosa é a mais afetada.</p>
+        </div>
+        <div>
+            <p>Muitas pessoas recebem o diagnóstico errado, ou demoram</p>
+            <p class="mg-top">muito para serem diagnosticadas.</p>
+        </div>
+        <div>
+            <p>Com o diagnóstico precoce, o tratamento dessa doença é muito mais eficaz.</p>
+        </div>
+        <div>
+            <p>Por isso, foi criado este site. Ele tem o objetivo de classificar uma imagem de</p>
+            <p class="mg-top">ressonância magnética do cérebro e classificá-la em uma das três classes:</p>
+            <ul>
+                <li>Cognitivamente Normal</li>
+                <li>Comprometimento Cognitivo Leve</li>
+                <li>Doença de Alzheimer</li>
+            </ul>
+        </div>
+        <div>
+            <p>O resultado da classificação será exibido com dados que possuem 67% de acurácia.</p>
+        </div>
+    </div>
+    
     <div class="row fx jc-c" (click)="scrollToNextDiv(fluxo)">
         <img class="arrow" src="../../assets/img/arrowdown.png" alt="">
     </div>
 </section>
-
-<div class="intro-text">
-    <h2 class="bold">Classificação da Doença de Alzheimer</h2>
-    <div>
-        <p>A Doença de Alzheimer é a forma mais comum de demência, e a população</p>
-        <p class="mg-top">idosa é a mais afetada.</p>
-    </div>
-    <div>
-        <p>Muitas pessoas recebem o diagnóstico errado, ou demoram</p>
-        <p class="mg-top">muito para serem diagnosticadas.</p>
-    </div>
-    <div>
-        <p>Com o diagnóstico precoce, o tratamento dessa doença é muito mais eficaz.</p>
-    </div>
-    <div>
-        <p>Por isso, foi criado este site. Ele tem o objetivo de classificar uma imagem de</p>
-        <p class="mg-top">ressonância magnética do cérebro e classificá-la em uma das três classes:</p>
-        <ul>
-            <li>Cognitivamente Normal</li>
-            <li>Comprometimento Cognitivo Leve</li>
-            <li>Doença de Alzheimer</li>
-        </ul>
-    </div>
-    <div>
-        <p>O resultado da classificação será exibido com dados que possuem 67% de acurácia.</p>
-    </div>
-</div>
 
 <div id="fluxo" #fluxo>
     <app-fluxo></app-fluxo>
