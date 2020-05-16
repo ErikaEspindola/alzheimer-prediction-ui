@@ -1,7 +1,9 @@
 <div class="resultado">
   <div class="custom-container">
-    <h3 class="fx jc-c fx02">Resultado da Classificação</h3>
-    <h1 class="fx jc-c fx1 classe">Cognitivamente Normal</h1>
+    <h3 class="fx jc-c fx02 padding-bottom">Resultado da Classificação</h3>
+    <mat-spinner [(hidden)]="!loading" class="spinner"></mat-spinner>
+    <span [(hidden)]="!loading" class="load">Carregando...</span>
+    <h1 [(hidden)]="loading" class="fx jc-c fx1 classe">{{result}}</h1>
   </div>
 
   <div class="row fx jc-c" (click)="scrollToNextDiv(contato)">

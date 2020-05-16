@@ -6,7 +6,22 @@
     height: 420px;
     display: flex;
     flex-direction: column;
-    
+
+    .padding-bottom {
+      padding-bottom: 35px;
+    }
+
+    .load {
+      display: flex;
+      justify-content: center;
+      color: #8839c8;
+      padding-top: 30px;
+    }
+
+    .spinner {
+      margin-left: 45%;
+    }
+
     .fx1 {
       flex: 1;
     }

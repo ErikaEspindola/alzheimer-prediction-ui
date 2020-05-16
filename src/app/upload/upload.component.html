@@ -1,34 +1,35 @@
 <div class="upload">
 
-  <div class="custom-container">
-      <h3 class="fx jc-c">Envie sua imagem do cérebro!</h3>
-      <div class="dropzone fx jc-c">
-          <ngx-dropzone class="custom-dropzone fx jc-c" (change)="onFilesAdded($event, 1)" [multiple]="false">
-              <ngx-dropzone-label>
-                  <img src="../assets/img/uploadroxo.png">
-                  <p>Clique ou arraste o arquivo para fazer upload</p>
-              </ngx-dropzone-label>
-              <ngx-dropzone-preview *ngFor="let f of uploadFiles" [removable]="true" (removed)="onRemove(f)">
-                  <ngx-dropzone-label>{{ f.name }}</ngx-dropzone-label>
-              </ngx-dropzone-preview>
-          </ngx-dropzone>
-  
-      </div>
-  
-      <div class="format">
-          <small>Formato aceito: NIfTI (.nii)</small>
-      </div>
-  
-      <div class="fx jc-c">
-          <button mat-raised-button color="primary" (click)="upload(uploadFiles, 0)">Enviar</button>
-      </div>
-  </div>
+    <div class="custom-container">
+        <h3 class="fx jc-c">Envie sua imagem do cérebro!</h3>
+        <div class="dropzone fx jc-c">
+            <ngx-dropzone class="custom-dropzone fx jc-c" (change)="onFilesAdded($event, 1)" [multiple]="false">
+                <ngx-dropzone-label>
+                    <img src="../assets/img/uploadroxo.png">
+                    <p>Clique ou arraste o arquivo para fazer upload</p>
+                </ngx-dropzone-label>
+                <ngx-dropzone-preview *ngFor="let f of uploadFiles" [removable]="true" (removed)="onRemove(f)">
+                    <ngx-dropzone-label>{{ f.name }}</ngx-dropzone-label>
+                </ngx-dropzone-preview>
+            </ngx-dropzone>
 
-  <div class="row fx jc-c" (click)="scrollToNextDiv(resultado)">
-      <img class="arrow" src="../../assets/img/blackarrowdown.png" alt="">
-  </div>
+        </div>
+
+        <div class="format">
+            <small>Formato aceito: NIfTI (.nii)</small>
+        </div>
+
+        <div class="fx jc-c">
+            <button mat-raised-button color="primary"
+                (click)="upload(uploadFiles, 0);scrollToNextDiv(resultado)">Enviar</button>
+        </div>
+    </div>
+
+    <div class="row fx jc-c" (click)="scrollToNextDiv(resultado)">
+        <img class="arrow" src="../../assets/img/blackarrowdown.png" alt="">
+    </div>
 </div>
 
 <div id="resultado" #resultado>
-    <app-resultado resultado="result"></app-resultado>
+    <app-resultado result="{{result}}"></app-resultado>
 </div>
