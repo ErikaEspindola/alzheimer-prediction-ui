@@ -21,7 +21,11 @@ html {
 }
 
 .jc-se {
-    justify-content: space-evenly;
+  justify-content: space-evenly;
+}
+
+.jc-sb {
+  justify-content: space-between;
 }
 
 .ai-fe {
@@ -39,4 +43,13 @@ html {
 .mat-progress-spinner circle,
 .mat-spinner circle {
   stroke: #9c3aec !important;
+}
+
+.next-div:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+}
+
+.ta-center {
+  text-align: center;
 }

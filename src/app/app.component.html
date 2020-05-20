@@ -1,17 +1,17 @@
 <mat-toolbar [ngClass]="changeNavBarColor? 'mat-toolbar-color' : 'mat-toolbar-transparent'">
-    <mat-toolbar-row>
+    <mat-toolbar-row class="fx jc-sb">
         <div>
             <img src="../../assets/img/LogoMakr_2zUTvZ.png">
             <a href="#">DANet</a>
         </div>
 
-        <span class="example-spacer"></span>
-
-        <a mat-button href="#intro">Introdução</a>
-        <a mat-button href="#fluxo">Funcionamento</a>
-        <a mat-button href="#upload">Upload</a>
-        <a mat-button href="#resultado">Resultado</a>
-        <a mat-button href="#contato">Contato</a>
+        <div>
+            <a mat-button href="#intro">Introdução</a>
+            <a mat-button href="#fluxo">Funcionamento</a>
+            <a mat-button href="#upload">Upload</a>
+            <a mat-button href="#resultado">Resultado</a>
+            <a mat-button href="#contato">Contato</a>
+        </div>
     </mat-toolbar-row>
 </mat-toolbar>
 
@@ -43,7 +43,7 @@
         </div>
     </div>
     
-    <div class="row fx jc-c" (click)="scrollToNextDiv(fluxo)">
+    <div class="next-div fx jc-c" (click)="scrollToNextDiv(fluxo)">
         <img class="arrow" src="../../assets/img/arrowdown.png" alt="">
     </div>
 </section>

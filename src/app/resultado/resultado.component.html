@@ -1,12 +1,14 @@
 <div class="resultado">
   <div class="custom-container">
     <h3 class="fx jc-c fx02 padding-bottom">Resultado da Classificação</h3>
-    <mat-spinner [(hidden)]="!loading" class="spinner"></mat-spinner>
+    <div class="fx jc-c">
+      <mat-spinner [(hidden)]="!loading"></mat-spinner>
+    </div>
     <span [(hidden)]="!loading" class="load">Carregando...</span>
-    <h1 [(hidden)]="loading" class="fx jc-c fx1 classe">{{result}}</h1>
+    <h1 [(hidden)]="loading" class="fx jc-c fx1 classe ta-center">Comprometimento Cognitivo Leve {{result}}</h1>
   </div>
 
-  <div class="row fx jc-c" (click)="scrollToNextDiv(contato)">
+  <div class="next-div fx jc-c" (click)="scrollToNextDiv(contato)">
     <img class="arrow" src="../../assets/img/blackarrowdown.png" alt="">
   </div>
 </div>
