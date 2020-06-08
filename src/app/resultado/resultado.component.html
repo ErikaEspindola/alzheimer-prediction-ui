@@ -5,7 +5,7 @@
       <mat-spinner [(hidden)]="!loading"></mat-spinner>
     </div>
     <span [(hidden)]="!loading" class="load">Carregando...</span>
-    <h1 [(hidden)]="loading" class="fx jc-c fx1 classe ta-center">Comprometimento Cognitivo Leve {{result}}</h1>
+    <h1 [(hidden)]="loading" class="fx jc-c fx1 classe ta-center">{{result}}</h1>
   </div>
 
   <div class="fx jc-c" (click)="scrollToNextDiv(contato)">
